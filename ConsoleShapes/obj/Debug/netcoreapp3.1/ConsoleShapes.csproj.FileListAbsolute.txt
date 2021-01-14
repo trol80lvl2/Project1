@@ -1,0 +1,13 @@
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\bin\Debug\netcoreapp3.1\ConsoleShapes.exe
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\bin\Debug\netcoreapp3.1\ConsoleShapes.deps.json
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\bin\Debug\netcoreapp3.1\ConsoleShapes.runtimeconfig.json
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\bin\Debug\netcoreapp3.1\ConsoleShapes.runtimeconfig.dev.json
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\bin\Debug\netcoreapp3.1\ConsoleShapes.dll
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\bin\Debug\netcoreapp3.1\ConsoleShapes.pdb
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\obj\Debug\netcoreapp3.1\ConsoleShapes.csprojAssemblyReference.cache
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\obj\Debug\netcoreapp3.1\ConsoleShapes.AssemblyInfoInputs.cache
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\obj\Debug\netcoreapp3.1\ConsoleShapes.AssemblyInfo.cs
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\obj\Debug\netcoreapp3.1\ConsoleShapes.csproj.CoreCompileInputs.cache
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\obj\Debug\netcoreapp3.1\ConsoleShapes.dll
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\obj\Debug\netcoreapp3.1\ConsoleShapes.pdb
+C:\Users\Ma1x\source\repos\ConsoleShapes\ConsoleShapes\obj\Debug\netcoreapp3.1\ConsoleShapes.genruntimeconfig.cache
