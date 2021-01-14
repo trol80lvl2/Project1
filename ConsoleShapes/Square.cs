@@ -8,6 +8,9 @@ namespace ConsoleShapes
     {
         protected override double S { get; set; }
         protected override double P { get; set; }
+
+        public override int Depth { get; set; }
+
         private Line _firstSide, _secondSide, _thirdSide, _fourthSide;
 
         public Square(Coordinates firstPointCoordinates, Coordinates secondPointCoordinates, Coordinates thirdPointCoordinates, Coordinates fourthPointCoordinates)
@@ -28,12 +31,14 @@ namespace ConsoleShapes
 
         public override double GetArea()
         {
-            throw new NotImplementedException();
+            S = Math.Round(_firstSide.Length * _firstSide.Length);
+            return S;
         }
 
         public override double GetPerimeter()
         {
-            throw new NotImplementedException();
+            P = Math.Round(_firstSide.Length * 4, 4);
+            return P;
         }
     }
 }

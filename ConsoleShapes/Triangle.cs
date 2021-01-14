@@ -8,6 +8,8 @@ namespace ConsoleShapes
     {
         protected override double S { get; set; }
         protected override double P { get; set; }
+        public override int Depth { get; set; }
+
         private Line _firstSide, _secondSide, _thirdSide;
 
         public Triangle(Coordinates firstPointCoordinates, Coordinates secondPointCoordinates, Coordinates thirdPointCoordinates)
@@ -26,12 +28,15 @@ namespace ConsoleShapes
 
         public override double GetArea()
         {
-            throw new NotImplementedException();
+            double p = (_firstSide.Length + _secondSide.Length + _thirdSide.Length) / 2;
+            S = Math.Round(Math.Sqrt(p * (p - _firstSide.Length) * (p - _secondSide.Length) * (p - _thirdSide.Length)), 4);
+            return S;
         }
 
         public override double GetPerimeter()
         {
-            throw new NotImplementedException();
+            P = _firstSide.Length + _secondSide.Length + _thirdSide.Length;
+            return P;
         }
     }
 }

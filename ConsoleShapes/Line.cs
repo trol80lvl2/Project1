@@ -57,12 +57,13 @@ namespace ConsoleShapes
 
         public override double GetArea()
         {
-            throw new NotImplementedException();
+            S = 0;
+            return S;
         }
 
         public override double GetPerimeter()
         {
-            throw new NotImplementedException();
+            return Length;
         }
     }
 }
