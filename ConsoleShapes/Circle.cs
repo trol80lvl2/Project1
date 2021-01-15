@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleShapes
 {
-    class Circle : Shape, IHaveArea, IHavePerimeter, IFillable
+    public class Circle : Shape, IHaveArea, IHavePerimeter, IFillable
     {
         public int Radius { get; private set; }
 
@@ -24,10 +24,36 @@ namespace ConsoleShapes
                 return Math.Round(2 * Math.PI * Radius, 4); 
             }
         }
+        public Circle(int radius, int depth)
+        {
+            Radius = radius;
+            Depth = depth;
+        }
 
         public override void Draw()
         {
-            throw new NotImplementedException();
+            double thickness = 0.4;
+            int symbol = Depth;
+
+            Console.WriteLine();
+            double rIn = Radius - thickness, rOut = Radius + thickness;
+
+            for (double y = Radius; y >= -Radius; --y)
+            {
+                for (double x = -Radius; x < rOut; x += 0.5)
+                {
+                    double value = x * x + y * y;
+                    if (value >= rIn * rIn && value <= rOut * rOut)
+                    {
+                        Console.Write(symbol);
+                    }
+                    else 
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                Console.WriteLine();
+            }
         }
 
         public void Fill()

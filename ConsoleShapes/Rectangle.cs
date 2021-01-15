@@ -1,19 +1,17 @@
 ﻿using ConsoleShapes.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace ConsoleShapes
 {
-    public class Triangle : Shape,IHaveArea,IHavePerimeter,IFillable,IMultiLineShape
+    public class Rectangle : Shape,IHaveArea,IHavePerimeter,IFillable,IMultiLineShape
     {
         public double S
         {
             get
             {
-                double p = Lines.Sum(x=>x.Length) / 2;
-                return Math.Round(Math.Sqrt(p * (p - Lines[0].Length) * (p - Lines[1].Length) * (p - Lines[2].Length)), 4); 
+                return Math.Round(Lines[0].Length * Lines[1].Length);
             }
         }
 
@@ -21,23 +19,23 @@ namespace ConsoleShapes
         {
             get
             {
-                return Lines.Sum(x=>x.Length) / 2;
+                return Math.Round(Lines[0].Length * 2 + Lines[1].Length * 2, 4);
             }
         }
 
         public Line[] Lines { get; }
 
 
-        public Triangle(Coordinates firstPointCoordinates, Coordinates secondPointCoordinates, Coordinates thirdPointCoordinates,int depth)
+        public Rectangle(Coordinates firstPointCoordinates, Coordinates secondPointCoordinates, Coordinates thirdPointCoordinates, Coordinates fourthPointCoordinates,int depth)
         {
             Depth = depth;
-            Lines = new Line[] { new Line(firstPointCoordinates, secondPointCoordinates, Depth), new Line(firstPointCoordinates, thirdPointCoordinates, Depth)
-            , new Line(secondPointCoordinates, thirdPointCoordinates, Depth) };
+            Lines = new Line[] { new Line(firstPointCoordinates, secondPointCoordinates, Depth), new Line(secondPointCoordinates, thirdPointCoordinates, Depth)
+            , new Line(thirdPointCoordinates, fourthPointCoordinates, Depth), new Line(firstPointCoordinates, fourthPointCoordinates, Depth)};
         }
 
         public override void Draw()
         {
-            foreach(var line in Lines)
+            foreach (var line in Lines)
             {
                 line.Draw();
             }
@@ -50,7 +48,7 @@ namespace ConsoleShapes
 
         public override void MoveUp()
         {
-            foreach(var line in Lines)
+            foreach (var line in Lines)
             {
                 line.MoveUp();
             }

@@ -7,6 +7,7 @@ namespace ConsoleShapes
     public abstract class Shape
     {
         public int Depth { get; set; }
+        public ConsoleColor Color { get; set; }
         public abstract void Draw();
         public abstract void MoveUp();
         public abstract void MoveDown();

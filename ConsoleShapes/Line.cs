@@ -4,19 +4,18 @@ using System.Text;
 
 namespace ConsoleShapes
 {
-    class Line : Shape
+    public class Line : Shape
     {
-
-
-        public Coordinates StartCoordinates { get; private set; }
-        public Coordinates FinishCoordinates { get; private set; }
+        public Coordinates StartCoordinates { get; set; }
+        public Coordinates FinishCoordinates { get; set; }
         public double Length { get; private set; }
 
-        public Line(Coordinates startCoordinates, Coordinates finishCoordinates)
+        public Line(Coordinates startCoordinates, Coordinates finishCoordinates, int depth)
         {
             StartCoordinates = startCoordinates;
             FinishCoordinates = finishCoordinates;
             Length = Math.Round(Math.Sqrt((Math.Pow(FinishCoordinates.X-StartCoordinates.X,2))+(Math.Pow(FinishCoordinates.Y - StartCoordinates.Y, 2))),4);
+            Depth = depth;
         }
 
         public override void Draw()
@@ -42,36 +41,49 @@ namespace ConsoleShapes
             double x = StartCoordinates.X;
             double y = StartCoordinates.Y;
 
+            Console.ForegroundColor = ConsoleColor.Red;
             do
             {
-                Console.SetCursorPosition(Math.Abs(graphX), Math.Abs(graphY));
-                Console.Write('1');
+                if(!(Math.Abs(graphX)!=graphX || Math.Abs(graphY)!=graphY))
+                {
+                    Console.SetCursorPosition(graphX, graphY);
+                    Console.Write(Depth);
+                }
                 x += dx;
                 y += dy;
                 graphX = (int)Math.Round(x / scale);
                 graphY = (int)Math.Round(y / scale);
             }
             while (Math.Abs(graphX - FinishCoordinates.X) != 0 || Math.Abs(graphY - FinishCoordinates.Y) != 0);
+            Console.ForegroundColor = default;
         }
 
         public override void MoveUp()
         {
-            throw new NotImplementedException();
+            StartCoordinates = new Coordinates(StartCoordinates.X, StartCoordinates.Y - 1);
+            FinishCoordinates = new Coordinates(FinishCoordinates.X, FinishCoordinates.Y - 1);
+            Draw();
         }
 
         public override void MoveDown()
         {
-            throw new NotImplementedException();
+            StartCoordinates = new Coordinates(StartCoordinates.X, StartCoordinates.Y + 1);
+            FinishCoordinates = new Coordinates(FinishCoordinates.X, FinishCoordinates.Y + 1);
+            Draw();
         }
 
         public override void MoveLeft()
         {
-            throw new NotImplementedException();
+            StartCoordinates = new Coordinates(StartCoordinates.X - 1, StartCoordinates.Y);
+            FinishCoordinates = new Coordinates(FinishCoordinates.X - 1 , FinishCoordinates.Y);
+            Draw();
         }
 
         public override void MoveRight()
         {
-            throw new NotImplementedException();
+            StartCoordinates = new Coordinates(StartCoordinates.X + 1, StartCoordinates.Y);
+            FinishCoordinates = new Coordinates(FinishCoordinates.X + 1, FinishCoordinates.Y);
+            Draw();
         }
     }
 }

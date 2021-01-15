@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace ConsoleShapes
 {
@@ -7,8 +8,11 @@ namespace ConsoleShapes
         static void Main(string[] args)
         {
             //TriangleForTestDrawing testDrawing = new TriangleForTestDrawing(new Coordinates(0, 0), new Coordinates(0, 20), new Coordinates(50, 21));
-            //Triangle triangle = new Triangle(new Coordinates(0, 0), new Coordinates(0, 20), new Coordinates(50, 20));
+            Triangle triangle = new Triangle(new Coordinates(1, 1), new Coordinates(6, 20), new Coordinates(50, 20), 1);
+            Rectangle rectangle = new Rectangle(new Coordinates(1, 1), new Coordinates(20, 20), new Coordinates(1, 20), new Coordinates(20, 1),2);
+            Line line = new Line(new Coordinates(1, 1), new Coordinates(20, 1), 9);
             //Square square = new Square(new Coordinates(0, 0), new Coordinates(0, 20), new Coordinates(50, 20), new Coordinates(50, 0));
+            Circle circle = new Circle(5,5);
             while (true)
             {
                 var key = Console.ReadKey().Key;
@@ -17,23 +21,24 @@ namespace ConsoleShapes
                     case ConsoleKey.D1:
                     case ConsoleKey.NumPad1:
                         Console.Clear();
-                        //square.Draw();
+                        line.Draw();
                         break;
                     case ConsoleKey.UpArrow:
                         Console.Clear();
-                        //testDrawing.ChangeCoordinatesY(-1);
+                        line.MoveUp();
                         break;
                     case ConsoleKey.DownArrow:
                         Console.Clear();
-                        //testDrawing.ChangeCoordinatesY(1);
+                        line.MoveDown();
                         break;
                     case ConsoleKey.LeftArrow:
                         Console.Clear();
-                        //testDrawing.ChangeCoordinatesX(-1);
+                        line.MoveLeft();
                         break;
                     case ConsoleKey.RightArrow:
+
                         Console.Clear();
-                        //testDrawing.ChangeCoordinatesX(1);
+                        line.MoveRight();
                         break;
                 }
             }

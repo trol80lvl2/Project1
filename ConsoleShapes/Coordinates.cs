@@ -6,8 +6,8 @@ namespace ConsoleShapes
 {
     public struct Coordinates
     {
-        public int X;
-        public int Y;
+        public int X { get; set; }
+        public int Y { get; set; }
         public Coordinates(int x, int y)
         {
             X = x;
