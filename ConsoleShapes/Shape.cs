@@ -6,13 +6,11 @@ namespace ConsoleShapes
 {
     public abstract class Shape
     {
-        protected abstract double S { get; set; }
-        protected abstract double P { get; set; }
-        public abstract int Depth { get; set; }
-
-        public abstract double GetArea();
-        public abstract double GetPerimeter();
-
+        public int Depth { get; set; }
         public abstract void Draw();
+        public abstract void MoveUp();
+        public abstract void MoveDown();
+        public abstract void MoveLeft();
+        public abstract void MoveRight();
     }
 }

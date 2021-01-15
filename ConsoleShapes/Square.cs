@@ -1,15 +1,27 @@
-﻿using System;
+﻿using ConsoleShapes.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ConsoleShapes
 {
-    class Square : Shape
+    class Square : Shape,IHaveArea,IHavePerimeter,IFillable
     {
-        protected override double S { get; set; }
-        protected override double P { get; set; }
+        public double S
+        {
+            get
+            {
+                return Math.Round(_firstSide.Length * _firstSide.Length);
+            }
+        }
 
-        public override int Depth { get; set; }
+        public double P
+        {
+            get
+            {
+                return Math.Round(_firstSide.Length * 4, 4);
+            }
+        }
 
         private Line _firstSide, _secondSide, _thirdSide, _fourthSide;
 
@@ -29,16 +41,29 @@ namespace ConsoleShapes
             _fourthSide.Draw();
         }
 
-        public override double GetArea()
+        public void Fill()
         {
-            S = Math.Round(_firstSide.Length * _firstSide.Length);
-            return S;
+            throw new NotImplementedException();
         }
 
-        public override double GetPerimeter()
+        public override void MoveUp()
         {
-            P = Math.Round(_firstSide.Length * 4, 4);
-            return P;
+            throw new NotImplementedException();
+        }
+
+        public override void MoveDown()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MoveLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MoveRight()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,14 +1,29 @@
-﻿using System;
+﻿using ConsoleShapes.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ConsoleShapes
 {
-    class Triangle : Shape
+    class Triangle : Shape,IHaveArea,IHavePerimeter,IFillable
     {
-        protected override double S { get; set; }
-        protected override double P { get; set; }
-        public override int Depth { get; set; }
+        public double S
+        {
+            get
+            {
+                double p = (_firstSide.Length + _secondSide.Length + _thirdSide.Length) / 2;
+                return Math.Round(Math.Sqrt(p * (p - _firstSide.Length) * (p - _secondSide.Length) * (p - _thirdSide.Length)), 4); 
+            }
+        }
+
+        public double P
+        {
+            get
+            {
+                return _firstSide.Length + _secondSide.Length + _thirdSide.Length;
+            }
+        }
+
 
         private Line _firstSide, _secondSide, _thirdSide;
 
@@ -26,17 +41,29 @@ namespace ConsoleShapes
             _thirdSide.Draw();
         }
 
-        public override double GetArea()
+        public void Fill()
         {
-            double p = (_firstSide.Length + _secondSide.Length + _thirdSide.Length) / 2;
-            S = Math.Round(Math.Sqrt(p * (p - _firstSide.Length) * (p - _secondSide.Length) * (p - _thirdSide.Length)), 4);
-            return S;
+            throw new NotImplementedException();
         }
 
-        public override double GetPerimeter()
+        public override void MoveUp()
         {
-            P = _firstSide.Length + _secondSide.Length + _thirdSide.Length;
-            return P;
+            throw new NotImplementedException();
+        }
+
+        public override void MoveDown()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MoveLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MoveRight()
+        {
+            throw new NotImplementedException();
         }
     }
 }

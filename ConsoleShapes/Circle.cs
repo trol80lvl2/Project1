@@ -1,31 +1,58 @@
-﻿using System;
+﻿using ConsoleShapes.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ConsoleShapes
 {
-    class Circle : Shape
+    class Circle : Shape, IHaveArea, IHavePerimeter, IFillable
     {
-        public override int Depth { get; set; }
-        protected override double S { get; set; }
-        protected override double P { get; set; }
         public int Radius { get; private set; }
+
+        public double S
+        {
+            get
+            {
+                return Math.Round(Math.PI * Radius * Radius, 4); 
+            }
+        }
+
+        public double P
+        {
+            get
+            {
+                return Math.Round(2 * Math.PI * Radius, 4); 
+            }
+        }
 
         public override void Draw()
         {
             throw new NotImplementedException();
         }
 
-        public override double GetArea()
+        public void Fill()
         {
-            S = Math.Round(Math.PI * Radius * Radius, 4);
-            return S;
+            throw new NotImplementedException();
         }
 
-        public override double GetPerimeter()
+        public override void MoveDown()
         {
-            P = Math.Round(2 * Math.PI * Radius,4);
-            return P;
+            throw new NotImplementedException();
+        }
+
+        public override void MoveLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MoveRight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MoveUp()
+        {
+            throw new NotImplementedException();
         }
     }
 }
