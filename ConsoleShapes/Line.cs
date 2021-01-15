@@ -6,8 +6,7 @@ namespace ConsoleShapes
 {
     class Line : Shape
     {
-        protected override double S { get; set; }
-        protected override double P { get; set; }
+
 
         public Coordinates StartCoordinates { get; private set; }
         public Coordinates FinishCoordinates { get; private set; }
@@ -55,12 +54,22 @@ namespace ConsoleShapes
             while (Math.Abs(graphX - FinishCoordinates.X) != 0 || Math.Abs(graphY - FinishCoordinates.Y) != 0);
         }
 
-        public override double GetArea()
+        public override void MoveUp()
         {
             throw new NotImplementedException();
         }
 
-        public override double GetPerimeter()
+        public override void MoveDown()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MoveLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MoveRight()
         {
             throw new NotImplementedException();
         }

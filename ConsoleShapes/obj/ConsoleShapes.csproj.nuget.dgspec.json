@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ma1x\\source\\repos\\ConsoleShapes\\ConsoleShapes\\ConsoleShapes.csproj": {}
+    "C:\\Users\\Ma1x\\Desktop\\ConsoleShapes\\ConsoleShapes\\ConsoleShapes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ma1x\\source\\repos\\ConsoleShapes\\ConsoleShapes\\ConsoleShapes.csproj": {
+    "C:\\Users\\Ma1x\\Desktop\\ConsoleShapes\\ConsoleShapes\\ConsoleShapes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ma1x\\source\\repos\\ConsoleShapes\\ConsoleShapes\\ConsoleShapes.csproj",
+        "projectUniqueName": "C:\\Users\\Ma1x\\Desktop\\ConsoleShapes\\ConsoleShapes\\ConsoleShapes.csproj",
         "projectName": "ConsoleShapes",
-        "projectPath": "C:\\Users\\Ma1x\\source\\repos\\ConsoleShapes\\ConsoleShapes\\ConsoleShapes.csproj",
+        "projectPath": "C:\\Users\\Ma1x\\Desktop\\ConsoleShapes\\ConsoleShapes\\ConsoleShapes.csproj",
         "packagesPath": "C:\\Users\\Ma1x\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ma1x\\source\\repos\\ConsoleShapes\\ConsoleShapes\\obj\\",
+        "outputPath": "C:\\Users\\Ma1x\\Desktop\\ConsoleShapes\\ConsoleShapes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
