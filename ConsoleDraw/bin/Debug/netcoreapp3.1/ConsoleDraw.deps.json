@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ConsoleDraw/1.0.0": {
+        "dependencies": {
+          "EngineLibrary": "1.0.0"
+        },
+        "runtime": {
+          "ConsoleDraw.dll": {}
+        }
+      },
+      "EngineLibrary/1.0.0": {
+        "runtime": {
+          "EngineLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConsoleDraw/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EngineLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
