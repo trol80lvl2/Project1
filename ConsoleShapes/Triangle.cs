@@ -50,19 +50,63 @@ namespace ConsoleShapes
 
         public override void MoveUp()
         {
-            foreach(var line in Lines)
+
+            try
             {
-                line.MoveUp();
+                var min = Lines.Select(x => x.StartCoordinates).Union(Lines.Select(x => x.FinishCoordinates)).OrderByDescending(p => p.Y).Select(x => new Coordinates(x.X, x.Y)).FirstOrDefault();
+                if (min.Y == 0)
+                {
+                    throw new Exception();
+                }
+                Console.SetCursorPosition(min.X, min.Y);
+                foreach (var line in Lines)
+                {
+                    line.MoveUp();
+                }
+                Console.SetCursorPosition(min.X, min.Y);
+
+            }
+            catch
+            {
+                foreach (var line in Lines)
+                {
+                    line.Draw();
+                }
             }
         }
 
         public override void MoveDown()
         {
-            foreach (var line in Lines)
+            try
             {
-                line.MoveDown();
+                var min = Lines.Select(x => x.StartCoordinates).Union(Lines.Select(x => x.FinishCoordinates)).OrderBy(p => p.Y).Select(x => new Coordinates(x.X, x.Y)).FirstOrDefault();
+                if (min.Y == Console.WindowHeight)
+                {
+                    throw new Exception();
+                }
+                if (min.Y <= 1)
+                    Console.SetCursorPosition(min.X, 1);
+                else if (min.Y >= Console.WindowHeight)
+                    Console.SetCursorPosition(min.X, Console.WindowHeight);
+                else
+                    Console.SetCursorPosition(min.X, min.Y);
+                foreach (var line in Lines)
+                {
+                    line.MoveDown();
+                }
+                if (min.Y <= 1)
+                    Console.SetCursorPosition(min.X, 1);
+                else
+                    Console.SetCursorPosition(min.X, min.Y);
+
             }
-            Draw();
+            catch
+            {
+                foreach (var line in Lines)
+                {
+                    line.Draw();
+                }
+            }
         }
 
         public override void MoveLeft()

@@ -44,7 +44,7 @@ namespace ConsoleShapes
             Console.ForegroundColor = ConsoleColor.Red;
             do
             {
-                if(!(Math.Abs(graphX)!=graphX || Math.Abs(graphY)!=graphY))
+                if(!(Math.Abs(graphX)!=graphX || Math.Abs(graphY)!=graphY || graphY>Console.WindowHeight || graphX>Console.WindowWidth))
                 {
                     Console.SetCursorPosition(graphX, graphY);
                     Console.Write(Depth);
