@@ -1,140 +1,163 @@
-﻿using EngineLibrary.Shapes;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using System.Diagnostics;
+using EngineLibrary.Core;
+using EngineLibrary.Interfaces;
+using EngineLibrary.Items;
+using EngineLibrary.Items.Interfaces;
+using EngineLibrary.Services;
 
 namespace EngineLibrary
 {
     public class Engine
     {
-        private ConsoleWriter consoleWriter = WriterWrap.GetInstance();
-        ConsoleColor activeShapeColor = ConsoleColor.Blue;
-        private List<Shape> shapes = new List<Shape>();
-        Shape activeShape;
+        private bool _isRunning;
+        private bool _isModifyMode;
+
+        private ConsoleWriter _consoleWriter;
+
+        private readonly InfoPopup _help;
+        private readonly RealtimeInfo _realtimeInfo = RealtimeInfo.GetInstance();
+        private readonly IItemsHandler _itemsHandler;
+
+
 
         public Engine()
         {
-            int x = 20;
-            for (int i = 0; i < 4; i++)
-            {
-                Console.CursorVisible = false;
-                Circle circle = new Circle(10, new Coordinate(x, consoleWriter.Height / 2));
-                circle.Color = ConsoleColor.Blue;
-                circle.Depth = Char.Parse(i.ToString());
-                shapes.Add(circle);
-                activeShape = circle;
-                x += 30;
-                activeShape.Draw();
-            }
-            //Line triangle = new Line(new Coordinate(25, 10), new Coordinate(45,10));
-            //shapes.Add(triangle);
-            //activeShape = triangle;
-            //activeShape.Draw();
-            //consoleWriter.Flush();
-
-            Triangle rectangle = new Triangle(10, new Coordinate(20, 10));
-            rectangle.Color = ConsoleColor.Green;
-            shapes.Add(rectangle);
-            activeShape = rectangle;
-            activeShape.Draw();
-            consoleWriter.Flush();
+            _itemsHandler = new ItemsHandler();
+            _consoleWriter = new ConsoleWriter();
+            _help = new InfoPopup(_consoleWriter.Width, _consoleWriter.Height - 1, 1, '*');
         }
+
+        private void Input()
+        {
+            if (Console.KeyAvailable)
+            {
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+                if (_help.IsVisible && keyInfo.Key != ConsoleKey.H && keyInfo.Key != ConsoleKey.Escape)
+                    return;
+
+
+                int scalableDeltaValue = (int)_consoleWriter.ScaleX < 1 ? 1 : (int)_consoleWriter.ScaleX;
+
+                int keyDigit = (int)(keyInfo.Key - '0');
+                if (keyDigit >= 0 && keyDigit <= 9)
+                    _itemsHandler.SelectItem(keyDigit);
+
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.Escape:
+                        _isRunning = false;
+                        break;
+                    case ConsoleKey.A:
+                        _itemsHandler.AddItem(ConsoleHelper.ReadDigitOrDefault());
+                        break;
+                    case ConsoleKey.R:
+                        _itemsHandler.RemoveItem();
+                        break;
+                    case ConsoleKey.H:
+                        _help.IsVisible = !_help.IsVisible;
+                        break;
+                    case ConsoleKey.M:
+                        _isModifyMode = !_isModifyMode;
+                        break;
+                    case ConsoleKey.F:
+                        _itemsHandler.CurrentItem.isFilled = !_itemsHandler.CurrentItem.isFilled;
+                        break;
+                    case ConsoleKey.Q:
+                        _itemsHandler.ToggleSortByLength();
+                        break;
+                    case ConsoleKey.W:
+                        _itemsHandler.ToggleSortByArea();
+                        break;
+                    case ConsoleKey.S:
+                        _itemsHandler.SaveScene(ConsoleHelper.ReadDigitOrDefault());
+                        break;
+                    case ConsoleKey.L:
+                        _itemsHandler.LoadScene(ConsoleHelper.ReadDigitOrDefault());
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        if (_isModifyMode)
+                            (_itemsHandler.CurrentItem as IModifiable)?.ChangeHorizontal(-scalableDeltaValue);
+                        else
+                            _itemsHandler.CurrentItem?.Move(-scalableDeltaValue, 0);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        if (_isModifyMode)
+                            (_itemsHandler.CurrentItem as IModifiable)?.ChangeHorizontal(scalableDeltaValue);
+                        else
+                            _itemsHandler.CurrentItem?.Move(scalableDeltaValue, 0);
+                        break;
+                    case ConsoleKey.UpArrow:
+                        if (_isModifyMode)
+                            (_itemsHandler.CurrentItem as IModifiable)?.ChangeVertical(-scalableDeltaValue);
+                        else
+                            _itemsHandler.CurrentItem?.Move(0, -scalableDeltaValue);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (_isModifyMode)
+                            (_itemsHandler.CurrentItem as IModifiable)?.ChangeVertical(scalableDeltaValue);
+                        else
+                            _itemsHandler.CurrentItem?.Move(0, scalableDeltaValue);
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+        }
+
+        private void Update(double ellapsedTime)
+        {
+            // Update state (position etc) of all drawable objects
+
+            int framerate = (int)(1 / ellapsedTime);
+
+            _realtimeInfo.SetInfo("FPS", framerate);
+            _realtimeInfo.SetInfo("Shapes count", _itemsHandler.Items.Count);
+            _realtimeInfo.SetInfo("Selected shape index", _itemsHandler.Items.IndexOf(_itemsHandler.CurrentItem));
+            _realtimeInfo.SetInfo("Modify mode", _isModifyMode.ToString());
+
+        }
+
+        private void Render()
+        {
+            // Scaling objects
+            int width = Console.WindowWidth;
+            int height = Console.WindowHeight;
+            if (width != _consoleWriter.Width || height != _consoleWriter.Height)
+            {
+                _consoleWriter = new ConsoleWriter(width, height);
+            }
+
+            // Rendering scene
+            for (int i = 0; i < _itemsHandler.Items.Count; i++)
+                _itemsHandler.Items[i].Draw(_consoleWriter, (char)(i + '0'));
+
+
+            _help.Draw(_consoleWriter);
+            _realtimeInfo.Draw(_consoleWriter);
+
+            _consoleWriter.FastFlush();
+        }
+
         public void Start()
         {
-            while (true)
-            {
-                ConsoleKeyInfo key = new ConsoleKeyInfo();
-                if(TryReadDigit(out key))
-                {
-                    try
-                    {
-                        activeShape.Color = activeShapeColor;
-                        
-                        activeShape = shapes[Convert.ToInt32(key.KeyChar)-49];
-                        activeShapeColor = activeShape.Color;
-                        activeShape.Color = ConsoleColor.Red;
-                    }
-                    catch
-                    {
-                        activeShape.Color = ConsoleColor.Red;
-                    }
-                }
-                else
-                {
-                    bool isModifying = false;
-                    switch (key.Key)
-                    {
-                        case ConsoleKey.UpArrow:
-                            activeShape.MoveUp();
-                            break;
-                        case ConsoleKey.DownArrow:
-                            activeShape.MoveDown();
-                            break;
-                        case ConsoleKey.LeftArrow:
-                            activeShape.MoveLeft();
-                            break;
-                        case ConsoleKey.RightArrow:
-                            activeShape.MoveRight();
-                            break;
-                        case ConsoleKey.F:
-                            activeShape.isFilled = !activeShape.isFilled;
-                            activeShape.Draw();
-                            break;
-                        case ConsoleKey.M:
-                            isModifying = !isModifying;
-                            while (isModifying)
-                            {
-                                var innerKey = Console.ReadKey(true).Key;
-                                switch (innerKey)
-                                {
-                                    case ConsoleKey.UpArrow:
-                                        activeShape.Increase();
-                                        break;
-                                    case ConsoleKey.DownArrow:
-                                        activeShape.Decrease();
-                                        break;
-                                    case ConsoleKey.M:
-                                        isModifying = false;
-                                        break;
-                                }
-                                foreach (var shape in shapes)
-                                {
-                                    shape.Draw();
-                                }
-                                consoleWriter.Flush();
-                                //consoleWriter.Flush();
-                            }
-                            break;
-                    }
-                }
-                //consoleWriter.Clean();
+            _isRunning = true;
 
-                foreach(var shape in shapes)
-                {
-                    shape.Draw();
-                }
-                consoleWriter.Flush();
-            }
-        }
-        public void AddShape()
-        {
-            consoleWriter.Clean();
-            int x = 15;
-            for(int i = 0; i < 4; i++)
+            Stopwatch clock = new Stopwatch();
+
+            while (_isRunning)
             {
-                Circle circle = new Circle(10, new Coordinate(x, consoleWriter.Height / 2));
-                circle.Color = ConsoleColor.Blue;
-                circle.Depth = Char.Parse(i.ToString());
-                circle.Draw();
-                x += 30;
+                double dt = clock.ElapsedMilliseconds;
+                double dtSec = dt / 1000;
+                clock.Restart();
+
+                Input();
+                Update(dtSec);
+                Render();
             }
-            consoleWriter.Flush();
-        }
-        public static bool TryReadDigit(out ConsoleKeyInfo consoleKey)
-        {
-            ConsoleKeyInfo saveIndex = Console.ReadKey(true);
-            consoleKey = saveIndex;
-            return ((int)saveIndex.Key > 47 && (int)saveIndex.Key < 58) ? true : false;
         }
     }
 }

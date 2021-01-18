@@ -1,0 +1,22 @@
+[
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 19,\r\n  \u0022Height\u0022: 18,\r\n  \u0022X\u0022: 36,\r\n  \u0022Y\u0022: 13,\r\n  \u0022isSolid\u0022: true\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  },
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 31,\r\n  \u0022Height\u0022: 30,\r\n  \u0022X\u0022: 30,\r\n  \u0022Y\u0022: 10,\r\n  \u0022isSolid\u0022: false\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  },
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 43,\r\n  \u0022Height\u0022: 42,\r\n  \u0022X\u0022: 24,\r\n  \u0022Y\u0022: 7,\r\n  \u0022isSolid\u0022: false\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  },
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 53,\r\n  \u0022Height\u0022: 54,\r\n  \u0022X\u0022: 19,\r\n  \u0022Y\u0022: 4,\r\n  \u0022isSolid\u0022: false\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  },
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 65,\r\n  \u0022Height\u0022: 66,\r\n  \u0022X\u0022: 13,\r\n  \u0022Y\u0022: 1,\r\n  \u0022isSolid\u0022: false\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  }
+]

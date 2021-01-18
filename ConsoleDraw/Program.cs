@@ -1,6 +1,5 @@
 ﻿using System;
 using EngineLibrary;
-using EngineLibrary.Shapes;
 
 namespace ConsoleDraw
 {
@@ -9,7 +8,6 @@ namespace ConsoleDraw
         static void Main(string[] args)
         {
             Engine engine = new Engine();
-            //engine.AddShape();
             engine.Start();
         }
     }

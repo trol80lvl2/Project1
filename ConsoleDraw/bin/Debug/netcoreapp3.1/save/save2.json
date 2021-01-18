@@ -1,0 +1,22 @@
+[
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 30,\r\n  \u0022Height\u0022: 30,\r\n  \u0022X\u0022: 0,\r\n  \u0022Y\u0022: 3\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  },
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 30,\r\n  \u0022Height\u0022: 30,\r\n  \u0022X\u0022: 0,\r\n  \u0022Y\u0022: 33\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  },
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 30,\r\n  \u0022Height\u0022: 30,\r\n  \u0022X\u0022: 60,\r\n  \u0022Y\u0022: 3\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  },
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 30,\r\n  \u0022Height\u0022: 30,\r\n  \u0022X\u0022: 30,\r\n  \u0022Y\u0022: 18\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  },
+  {
+    "SerializedBaseItem": "{\r\n  \u0022Width\u0022: 30,\r\n  \u0022Height\u0022: 30,\r\n  \u0022X\u0022: 60,\r\n  \u0022Y\u0022: 33\r\n}",
+    "Type": "EngineLibrary.Items.Rectangle"
+  }
+]

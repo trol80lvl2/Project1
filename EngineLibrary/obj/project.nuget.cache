@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a8q4ASdCHp4/B6cheq2fXtYU1cQ0GKq/LvEgsp0/lWHuBkb3UHspS4oRp0sq9hekgSvCpAMnEQ3vSx7LBk1DPg==",
+  "dgSpecHash": "KfsbhpTUwjmRxdb2GEN6oWty2KZ+3jVW/uOQM3boAxsXxkZfoQ5yRSRdvA4AWBqL6C8SM7vedIpA7ahxSdCk7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ma1x\\Desktop\\ConsoleShapes\\EngineLibrary\\EngineLibrary.csproj",
-  "expectedPackageFiles": [
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
