@@ -6,8 +6,14 @@ namespace EngineLibrary.Items
 {
     public class Triangle : Shape, IModifiable, IGeometricObject
     {
-        public int Height { get; private set; }
-        public int BottomLength { get; private set; }
+        public int Height { get; set; }
+        public int BottomLength {
+            get 
+            {
+                int Length = 1;
+                return Length+=Height*4;
+            }
+            private set { } }
         public Triangle(int x, int y, int height) : base(x, y)
         {
             Height = height;
@@ -32,8 +38,9 @@ namespace EngineLibrary.Items
         {
             int i = 0;
 
-            int xTo = X, xFrom = X;
-            int yTo = Y + Height, yFrom = Y;
+            int xTempFrom = X, xTempTo = X;
+            int xTo = (int)(X * writer.ScaleX), xFrom = (int)(X * writer.ScaleX);
+            int yTo = (int)((Y + Height) * writer.ScaleX), yFrom = (int)(Y * writer.ScaleX);
 
             if (isFilled)
             {
@@ -43,7 +50,7 @@ namespace EngineLibrary.Items
                     {
                         writer.SetPoint(k, j, symb);
                     }
-                    xFrom--; xTo++;
+                    xFrom -= 2; xTo += 2;
                 }
 
             }
@@ -54,14 +61,14 @@ namespace EngineLibrary.Items
                 {
                     writer.SetPoint(xFrom, j, symb);
                     writer.SetPoint(xTo, j, symb);
-                    xFrom--; xTo++;
+                    xFrom -= 2; xTo += 2;
                 }
                 for (int u = xFrom; u <= xTo; u++)
                 {
                     writer.SetPoint(u, yTo, symb);
                 }
             }
-            BottomLength = xTo - xFrom - 1;
+            BottomLength = (int)((xTo - xFrom)/writer.ScaleX-1);
         }
 
         public double GetArea()
