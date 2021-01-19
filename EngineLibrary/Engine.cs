@@ -63,7 +63,8 @@ namespace EngineLibrary
                         _isModifyMode = !_isModifyMode;
                         break;
                     case ConsoleKey.F:
-                        _itemsHandler.CurrentItem.isFilled = !_itemsHandler.CurrentItem.isFilled;
+                        if (_itemsHandler.CurrentItem != null) 
+                            _itemsHandler.CurrentItem.isFilled = !_itemsHandler.CurrentItem.isFilled;
                         break;
                     case ConsoleKey.Q:
                         _itemsHandler.ToggleSortByLength();
@@ -124,8 +125,8 @@ namespace EngineLibrary
         private void Render()
         {
             // Scaling objects
-            int width = Console.WindowWidth;
-            int height = Console.WindowHeight;
+            int width = Console.WindowWidth - 1;
+            int height = Console.WindowHeight - 1;
             if (width != _consoleWriter.Width || height != _consoleWriter.Height)
             {
                 _consoleWriter = new ConsoleWriter(width, height);
@@ -145,18 +146,23 @@ namespace EngineLibrary
         public void Start()
         {
             _isRunning = true;
-
             Stopwatch clock = new Stopwatch();
+            int maxFramerate = 60;
+            double minFrameTime = 1.0 / maxFramerate;
+            clock.Start();
 
             while (_isRunning)
             {
                 double dt = clock.ElapsedMilliseconds;
                 double dtSec = dt / 1000;
-                clock.Restart();
-
-                Input();
-                Update(dtSec);
-                Render();
+                
+                if(dtSec >= minFrameTime)
+                {
+                    clock.Restart();
+                    Input();
+                    Update(dtSec);
+                    Render();
+                }
             }
         }
     }

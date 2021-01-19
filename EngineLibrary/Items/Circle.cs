@@ -6,7 +6,7 @@ namespace EngineLibrary.Items
 {
     public class Circle : Shape, IModifiable, IGeometricObject
     {
-        public int Radius { get; private set; }
+        public int Radius { get; set; }
 
         public Circle(int x, int y, int radius) : base(x, y)
         {
@@ -32,19 +32,19 @@ namespace EngineLibrary.Items
 
         public override void Draw(ConsoleWriter writer, char symb)
         {
-            int tempRadius = Radius;
+            int tempRadius = (int)(Radius * writer.ScaleX);
             double rIn = tempRadius - 0.45;
             double rOut = tempRadius + 0.45;
-            int tempX = X / 2, tempY = Y / 2;
+            int tempX = (int)(X / 2*writer.ScaleX), tempY =(int)( Y / 2*writer.ScaleX);
             double xc = tempX - tempRadius, yc = tempY - tempRadius;//Coordonates[0] - center of circle
             double yn = 0, xn = 0;
-            for (double y = Radius + yc, i = 0; y >= -Radius - yc; --y, i++)
+            for (double y = (tempRadius + yc) , i = 0; y >= (-tempRadius - yc); --y, i++)
             {
                 if (yc < 0)
                     yn = y + yc;
                 else
                     yn = y;
-                for (double x = -Radius - xc, j = 0; x < rOut + xc; x += 0.5, j++)
+                for (double x = (-tempRadius - xc), j = 0; x < (rOut + xc); x += 0.5, j++)
                 {
                     if (xc < 0)
                         xn = x - xc;
@@ -57,7 +57,7 @@ namespace EngineLibrary.Items
                     }
                     else if (isFilled && value < rIn * rIn && value < rOut * rOut)
                     {
-                        writer.SetPoint((int)j, (int)i, symb);
+                        writer.SetPoint((int)j , (int)i, symb);
                     }
                 }
             }

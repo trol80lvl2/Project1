@@ -29,7 +29,7 @@ namespace EngineLibrary.Core
             ScaleX = Width / StandartWidth;
             ScaleY = Height / StandartHeight;
 
-            Console.SetWindowSize(width, height);
+            Console.SetWindowSize(width + 1, height + 1);
             Console.CursorVisible = false;
 
             _activeBuffer = new Point[width][];

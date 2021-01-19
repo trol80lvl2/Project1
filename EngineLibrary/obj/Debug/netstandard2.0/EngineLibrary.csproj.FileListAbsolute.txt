@@ -1,9 +1,0 @@
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\bin\Debug\netstandard2.0\EngineLibrary.deps.json
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\bin\Debug\netstandard2.0\EngineLibrary.dll
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\bin\Debug\netstandard2.0\EngineLibrary.pdb
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\obj\Debug\netstandard2.0\EngineLibrary.csprojAssemblyReference.cache
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\obj\Debug\netstandard2.0\EngineLibrary.AssemblyInfoInputs.cache
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\obj\Debug\netstandard2.0\EngineLibrary.AssemblyInfo.cs
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\obj\Debug\netstandard2.0\EngineLibrary.csproj.CoreCompileInputs.cache
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\obj\Debug\netstandard2.0\EngineLibrary.dll
-C:\Users\Ma1x\Desktop\ConsoleShapes\EngineLibrary\obj\Debug\netstandard2.0\EngineLibrary.pdb
