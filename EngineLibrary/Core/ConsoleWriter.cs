@@ -23,6 +23,7 @@ namespace EngineLibrary.Core
 
         public ConsoleWriter(int width, int height)
         {
+            height = height < Console.LargestWindowHeight ? height : Console.LargestWindowHeight - 1;
             Width = width;
             Height = height;
 
