@@ -25,10 +25,10 @@ namespace EngineLibrary.Services
                     Items.Add(new Line(0, GetShiftedCoordinate(5), 50));
                     break;
                 case 2:
-                    Items.Add(new Triangle(19, GetShiftedCoordinate(5), 10));
+                    Items.Add(new Triangle(19, GetShiftedCoordinate(10), 10));
                     break;
                 case 3:
-                    Items.Add(new Rectangle(0, GetShiftedCoordinate(5), 30, 30));
+                    Items.Add(new Rectangle(0, GetShiftedCoordinate(10), 30, 30));
                     break;
                 case 4:
                     Items.Add(new Circle(20, 20 + GetShiftedCoordinate(20), 10));

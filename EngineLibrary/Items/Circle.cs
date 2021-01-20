@@ -72,5 +72,10 @@ namespace EngineLibrary.Items
         {
             return (int)(2 * Math.PI * Radius);
         }
+
+        public override void Move(int dX, int dY)
+        {
+            base.Move(dX * 2, dY * 2);
+        }
     }
 }
